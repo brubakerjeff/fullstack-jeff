@@ -42,11 +42,8 @@
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Input Files</a>
-
-              <a href="ProcessedFiles" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Processed Files</a>
-
-              
+              <a href="/" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Input Files</a>
+              <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Processed Files</a>             
             </div>
           </div>
         </div>
@@ -164,7 +161,8 @@
   <header class="bg-white shadow">
 
   
-                
+                                
+                                
                             
     <!--<div class="flex items-center">-->
         <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
@@ -175,40 +173,24 @@
   <main>
     <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
 
-  
-@if(session('success'))
-<div class="alert alert-success">
-  {{ session('success') }}
-</div> 
-@endif
     
-    <h1 class="mt-8 text-3xl font-bold tracking-tight text-gray-900" style="height:700px;">
-        <span style="">
-        <svg style="display:inline;vertical-align: bottom;"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-500"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
-        Thank you, more information has been requested. Please add the requested documents for review in our queue. 
-        
-        <form id='sendFiles' action="{{url('file-upload')}}" method="POST" enctype="multipart/form-data">
-              @csrf
-                <input 
-
-                    type="file" 
-                    name="files[]"
-                    id="files"
-                    class="form-control" 
-                    
-                    multiple
-                >
-                @error('file')
-                        <span class="alert">{{ $message }}</span>
-                    @enderror
-                <button type="submit" class="btn btn-success">Upload</button>
-                </form>
-        <br/><br/>
-        Note: Files can be added by dragging and dropping on a Desktop Platform.
-        </span>
-    </h1>
+    
       <!-- /End replace -->
-      
+      <div class="mt-8 bg-white  overflow-hidden shadow sm:rounded-lg">
+                    <div class="grid grid-cols-1 md:grid-cols-2">
+                        <div class="p-6">
+                            <div class="ml-12">
+                                <div class="mt-2 text-gray-600 dark:text-gray-800 text-sm">
+                                    Your documents have been reviewed and are shown below.
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        
+                    </div>
+                </div>
+    </div>
   </main>
 </div>
 
@@ -237,20 +219,4 @@
             </div>
         </div>
     </body>
-    <script>
-
-      function validateForm(event) {
-        const fileInput = document.getElementById('files');
-        if (fileInput.value === '') {
-          // at least one file is not selected
-          // prevent form submission and display an error message
-          event.preventDefault();
-          alert('Please select at least one file');
-        }
-        // else form is valid and can be submitted
-      }
-
-      document.getElementById('sendFiles').addEventListener('submit', validateForm);
-      </script>                                
-                
 </html>

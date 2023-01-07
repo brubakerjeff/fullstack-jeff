@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\FileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +18,11 @@ Route::get('/', function () {
 });
 
 
-Route::get('/reviewfiles', function () {
-    return view('reviewfiles');
+
+Route::get('/ProcessedFiles', function () {
+    return view('ProcessedFiles');
 });
+
+
+Route::post('file-upload',[FileController::class, 'store']);
+
