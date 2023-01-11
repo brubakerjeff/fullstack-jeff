@@ -13,5 +13,6 @@ The code should be stored in a git repository
 
 
 To start docker
-
-`./vendor/bin/sail up` 
+- mv .env .env.example
+- composer update
+- ./vendor/bin/sail up
