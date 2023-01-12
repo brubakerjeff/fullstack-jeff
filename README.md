@@ -13,5 +13,8 @@ The code should be stored in a git repository
 
 
 To start docker
-
-`./vendor/bin/sail up` 
+- cp   .env.example .env
+- composer update
+- ./vendor/bin/sail up
+- 
+- On the first run press 'Generate App Key'
